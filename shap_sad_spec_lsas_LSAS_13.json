@@ -1,0 +1,189 @@
+{
+  "filename": "../specs/SAD_combined.csv",
+  "x_indices": [
+    "LSASavoidance10wk0_1",
+    "LSASavoidance11wk0_1",
+    "LSASavoidance12wk0_1",
+    "LSASavoidance13wk0_1",
+    "LSASavoidance14wk0_1",
+    "LSASavoidance15wk0_1",
+    "LSASavoidance16wk0_1",
+    "LSASavoidance17wk0_1",
+    "LSASavoidance18wk0_1",
+    "LSASavoidance19wk0_1",
+    "LSASavoidance1wk0_1",
+    "LSASavoidance20wk0_1",
+    "LSASavoidance21wk0_1",
+    "LSASavoidance22wk0_1",
+    "LSASavoidance23wk0_1",
+    "LSASavoidance24wk0_1",
+    "LSASavoidance2wk0_1",
+    "LSASavoidance3wk0_1",
+    "LSASavoidance4wk0_1",
+    "LSASavoidance5wk0_1",
+    "LSASavoidance6wk0_1",
+    "LSASavoidance7wk0_1",
+    "LSASavoidance8wk0_1",
+    "LSASavoidance9wk0_1",
+    "LSASavoidancetotalwk0_1",
+    "LSASfear10wk0_1",
+    "LSASfear11wk0_1",
+    "LSASfear12wk0_1",
+    "LSASfear13wk0_1",
+    "LSASfear14wk0_1",
+    "LSASfear15wk0_1",
+    "LSASfear16wk0_1",
+    "LSASfear17wk0_1",
+    "LSASfear18wk0_1",
+    "LSASfear19wk0_1",
+    "LSASfear1wk0_1",
+    "LSASfear20wk0_1",
+    "LSASfear21wk0_1",
+    "LSASfear22wk0_1",
+    "LSASfear23wk0_1",
+    "LSASfear24wk0_1",
+    "LSASfear2wk0_1",
+    "LSASfear3wk0_1",
+    "LSASfear4wk0_1",
+    "LSASfear5wk0_1",
+    "LSASfear6wk0_1",
+    "LSASfear7wk0_1",
+    "LSASfear8wk0_1",
+    "LSASfear9wk0_1",
+    "LSASfeartotalwk0_1",
+    "LSAStotal_baseline"
+  ],
+  "target_vars": [
+    "target_LSAS_13"
+  ],
+  "group_var": null,
+  "n_splits": 100,
+  "test_size": 0.2,
+  "clf_info": [
+    [
+      [
+        "sklearn.impute",
+        "SimpleImputer",
+        {
+          "strategy": "most_frequent"
+        }
+      ],
+      [
+        "sklearn.preprocessing",
+        "StandardScaler"
+      ],
+      [
+        "sklearn.linear_model",
+        "RidgeCV",
+        {
+          "fit_intercept": true,
+          "normalize": true,
+          "alphas": [
+            0.01,
+            0.1,
+            1,
+            10,
+            100
+          ]
+        }
+      ]
+    ],
+    [
+      [
+        "sklearn.impute",
+        "SimpleImputer",
+        {
+          "strategy": "most_frequent"
+        }
+      ],
+      [
+        "sklearn.preprocessing",
+        "StandardScaler"
+      ],
+      [
+        "sklearn.linear_model",
+        "LassoCV",
+        {
+          "fit_intercept": true,
+          "normalize": true
+        }
+      ]
+    ],
+    [
+      [
+        "sklearn.impute",
+        "SimpleImputer",
+        {
+          "strategy": "most_frequent"
+        }
+      ],
+      [
+        "sklearn.preprocessing",
+        "StandardScaler"
+      ],
+      [
+        "sklearn.ensemble",
+        "ExtraTreesRegressor",
+        {
+          "n_estimators": 100
+        }
+      ]
+    ],
+    [
+      [
+        "sklearn.impute",
+        "SimpleImputer",
+        {
+          "strategy": "most_frequent"
+        }
+      ],
+      [
+        "sklearn.preprocessing",
+        "StandardScaler"
+      ],
+      [
+        "sklearn.svm",
+        "SVR",
+        {
+          "gamma": "scale"
+        },
+        [
+          {
+            "kernel": [
+              "rbf",
+              "linear"
+            ],
+            "C": [
+              0.001,
+              0.01,
+              0.1,
+              1,
+              10,
+              100
+            ],
+            "gamma": [
+              0.001,
+              0.01,
+              0.1,
+              1,
+              10,
+              100
+            ]
+          }
+        ]
+      ]
+    ]
+  ],
+  "permute": [
+    true,
+    false
+  ],
+  "gen_shap": true,
+  "nsamples": "auto",
+  "l1_reg": "aic",
+  "plot_top_n_shap": 10,
+  "metrics": [
+    "explained_variance_score",
+    "mean_absolute_error"
+  ]
+}
